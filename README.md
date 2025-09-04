@@ -1,56 +1,103 @@
-# B. E. S. S. A.
+# 🎵 B.E.S.S.A.
+
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![SQLite3](https://img.shields.io/badge/SQLite-3.39.5-orange?logo=sqlite)
+![DB Browser](https://img.shields.io/badge/DB_Browser-3.12.2-lightgrey?logo=sqlite)
+
 
 ## Visão Geral
 
-O B.E.S.S.A. (Balanço Eficiente de Show Som e Agendas) é uma ferramenta de linha de comando desenvolvida para gerenciar eventos como casamentos. O projeto permite cadastrar informações detalhadas sobre os eventos e os repertórios de música.
+**B.E.S.S.A.** (*Balanço Eficiente de Show, Som e Agendas*) é uma ferramenta de **linha de comando** desenvolvida para gerenciar eventos, como casamentos.  
 
-Os dados são armazenados em um banco de dados local SQLite, e é possível gerar relatórios em PDF para clientes.
+O projeto permite cadastrar informações detalhadas sobre os eventos e os repertórios de música, armazenando tudo em um banco de dados local **SQLite**. Também é possível gerar relatórios em **PDF** para os clientes.
+
+---
 
 ## Funcionalidades
 
-* Criação e cadastro de eventos com dados como cliente, local, datas e valores.
+- ✅ Cadastro de eventos com informações detalhadas: cliente, local, datas e valores.  
+- ✅ Gerenciamento de repertórios musicais por momento da cerimônia.  
+- ✅ Geração de PDFs resumindo o evento e o repertório.  
+- ✅ Persistência dos dados em banco de dados local.
 
-* Gerenciamento de repertórios musicais por momento da cerimônia.
-
-* Geração de PDFs de resumo do evento e do repertório.
-
-* Persistência dos dados em um banco de dados local.
+---
 
 ## Estrutura do Projeto
 
-O projeto é dividido em módulos:
+O projeto é modularizado em arquivos Python para melhor organização:
 
-* `main.py`: O script principal que inicia a aplicação.
+| Arquivo           | Função                                                                 |
+|------------------|------------------------------------------------------------------------|
+| `main.py`        | Script principal que inicia a aplicação.                               |
+| `bancoDados.py`  | Gerencia a conexão com o banco e operações de inserção.                |
+| `pdfCreator.py`  | Gera arquivos PDF de repertório e resumo de evento.                   |
+| `dataCreator.py` | Coleta e formata dados do evento.                                      |
+| `cerimonia.py`   | Gerencia a criação do repertório de acordo com o tipo de cerimônia.    |
+| `exibir.py`      | Exibe informações do evento na tela.                                   |
 
-* `bancoDados.py`: Gerencia a conexão com o banco de dados e as operações de inserção.
+---
 
-* `pdfCreator.py`: Responsável por gerar os arquivos PDF.
+## Banco de Dados
 
-* `dataCreator.py`: Coleta e formata os dados do evento.
+O banco de dados `clients.db` possui duas tabelas:
 
-* `cerimonia.py`: Gerencia a criação do repertório.
+### **eventos**
+Armazena os dados gerais de cada evento.
 
-* `exibir.py`: Exibe as informações do evento na tela.
+| Coluna          | Tipo    |
+|----------------|---------|
+| id              | INTEGER PRIMARY KEY |
+| nomeCliente     | TEXT    |
+| religiao        | TEXT    |
+| valor_total     | REAL    |
+| entrada         | REAL    |
+| entrada_paga    | TEXT    |
+| local           | TEXT    |
+| data_inicio     | TEXT    |
+| data_fim        | TEXT    |
+| duracao         | TEXT    |
+
+### **repertorio**
+Armazena as músicas de cada evento, vinculadas pelo ID do evento.
+
+| Coluna       | Tipo    |
+|-------------|---------|
+| id           | INTEGER PRIMARY KEY |
+| evento_id    | INTEGER |
+| momento      | TEXT    |
+| musica       | TEXT    |
+
+---
 
 ## Como Usar
 
 ### Pré-requisitos
 
-Certifique-se de ter o Python instalado. Instale a biblioteca `fpdf`:
+- Python 3.x instalado.  
+- Biblioteca `fpdf` instalada:
 
+```bash
 pip install fpdf
+```
 
+  
+- Todos os títulos (`##` ou `###`) estão corretos.  
+- Todos os blocos de código estão fechados.  
+- Listas estão corretamente renderizadas.  
+- Quebras de linha e separadores `---` garantem boa leitura no GitHub.  
 
-### Execução
+## Geração de PDFs
 
-1. Se o banco de dados estiver corrompido, execute o script de reparo uma vez:
+Todos os PDFs são salvos em um diretório `PDF` dentro da pasta do projeto, com subdiretórios separados para:
 
-python bancoDados.py
+- **Repertórios**
+- **Eventos**
 
+Isso mantém os arquivos organizados e de fácil acesso.
 
-2. Para iniciar o programa, execute o `main.py`:
+---
 
-python main.py
+## Conclusão
 
+O **B.E.S.S.A.** oferece uma solução simples, eficiente e organizada para o gerenciamento de eventos e repertórios musicais, permitindo que você tenha controle completo sobre cada detalhe do evento e gere relatórios profissionais para os clientes.
 
-Siga as instruções no terminal para criar um novo evento.
