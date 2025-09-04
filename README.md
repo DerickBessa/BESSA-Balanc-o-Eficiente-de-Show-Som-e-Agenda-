@@ -1,76 +1,56 @@
-# B. E. S. S. A. (Balanço Eficiente de Show Som e Agendas)
+# B. E. S. S. A.
 
-<h1 align="center">Gerenciamento eficiente de eventos e repertórios ✍️</h1>
+## Visão Geral
 
-##  Sobre o Projeto:
+O B.E.S.S.A. (Balanço Eficiente de Show Som e Agendas) é uma ferramenta de linha de comando desenvolvida para gerenciar eventos como casamentos. O projeto permite cadastrar informações detalhadas sobre os eventos e os repertórios de música.
 
-O B.E.S.S.A. é uma ferramenta de linha de comando desenvolvida para otimizar a gestão de eventos, como casamentos católicos e evangélicos. Ele permite um controle completo desde o cadastro inicial do evento até a geração de relatórios detalhados em PDF para os clientes.
+Os dados são armazenados em um banco de dados local SQLite, e é possível gerar relatórios em PDF para clientes.
 
-O projeto utiliza um banco de dados local SQLite para garantir a persistência e a segurança de todas as informações.
+## Funcionalidades
 
-## 🚀 Funcionalidades
+* Criação e cadastro de eventos com dados como cliente, local, datas e valores.
 
-* **Criação de Eventos**: Cadastre dados essenciais como nome do cliente, religião, local, valores e datas.
+* Gerenciamento de repertórios musicais por momento da cerimônia.
 
-* **Gestão de Repertório**: Organize a trilha sonora de cada momento da cerimônia, associando múltiplas músicas a um único momento.
+* Geração de PDFs de resumo do evento e do repertório.
 
-* **Persistência de Dados**: Armazene todas as informações de eventos e repertórios em um banco de dados local (`clients.db`).
+* Persistência dos dados em um banco de dados local.
 
-* **Geração de PDFs**: Crie automaticamente resumos de eventos e listas de repertórios em arquivos PDF, salvos em pastas organizadas.
+## Estrutura do Projeto
 
-## 💻 Tecnologias Utilizadas
+O projeto é dividido em módulos:
 
-Este projeto foi desenvolvido com as seguintes tecnologias:
+* `main.py`: O script principal que inicia a aplicação.
 
-## 🛠️ Estrutura do Projeto
+* `bancoDados.py`: Gerencia a conexão com o banco de dados e as operações de inserção.
 
-O projeto é modularizado em vários arquivos Python para melhor organização:
+* `pdfCreator.py`: Responsável por gerar os arquivos PDF.
 
-* `main.py`: O script principal que inicia a aplicação e guia o usuário através dos processos de criação de eventos e repertórios.
+* `dataCreator.py`: Coleta e formata os dados do evento.
 
-* `bancoDados.py`: Contém todas as funções relacionadas à gestão do banco de dados SQLite, incluindo a criação de tabelas e a inserção de dados.
+* `cerimonia.py`: Gerencia a criação do repertório.
 
-* `pdfCreator.py`: Contém as funções para gerar os arquivos PDF de repertório e de resumo de evento.
+* `exibir.py`: Exibe as informações do evento na tela.
 
-* `dataCreator.py`: Lida com a coleta de informações do evento, como datas, horários e valores, e formata-as.
+## Como Usar
 
-* `cerimonia.py`: Gerencia a criação do repertório de músicas para a cerimônia, de acordo com o tipo religioso.
+### Pré-requisitos
 
-* `exibir.py`: Responsável por exibir os cabeçalhos e resumos do evento na tela para o usuário.
-
-## ⚙️ Como Usar
-
-#### Pré-requisitos
-
-Certifique-se de ter o Python instalado. O projeto também usa a biblioteca `fpdf`, que pode ser instalada com o seguinte comando:
+Certifique-se de ter o Python instalado. Instale a biblioteca `fpdf`:
 
 pip install fpdf
 
 
-#### Execução
+### Execução
 
-1. **Repare o Banco de Dados (Opcional):** Se você encontrar problemas com o banco de dados (`clients.db`), execute o script de reparo uma única vez.
+1. Se o banco de dados estiver corrompido, execute o script de reparo uma vez:
 
 python bancoDados.py
 
 
-Isso irá apagar e recriar as tabelas.
-
-2. **Inicie o Programa Principal:** Execute o arquivo `main.py` para começar a usar o aplicativo.
+2. Para iniciar o programa, execute o `main.py`:
 
 python main.py
 
 
-Siga as instruções na tela para inserir os dados do evento e do repertório.
-
-## 📊 GitHub Stats
-
-> **Atenção:** Substitua `DerickBessa` pelo seu próprio nome de usuário do GitHub para ver suas estatísticas.
-
-<br/>
-
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DerickBessa/DerickBessa/output/github-snake-dark.svg" />
-<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/DerickBessa/DerickBessa/output/github-snake.svg" />
-<img alt="github-snake" src="https://raw.githubusercontent.com/DerickBessa/DerickBessa/output/github-snake.svg" />
-</picture>
+Siga as instruções no terminal para criar um novo evento.
