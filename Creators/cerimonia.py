@@ -1,4 +1,4 @@
-from pdfcreator import pdfRepertorioCreator
+from Creators.pdfcreator import pdfRepertorioCreator
 
 import os
 def cerimoniaCreator(ehCatolico, nomeCliente):
